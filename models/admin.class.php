@@ -2,9 +2,9 @@
 /**
  * @Author: name
  * @Date:   2019-03-20 16:24:32
- * @Last Modified by:   name
- * @Last Modified time: 2019-03-20 16:25:07
+ * @Last Modified by:   zhao mac
+ * @Last Modified time: 2019-03-20 20:15:08
  */
-class admin extends DBModel {
+class Admin extends DBModel {
 
 }

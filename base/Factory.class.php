@@ -3,20 +3,30 @@
 /**
  * @Author: zhao mac
  * @Date:   2019-03-20 08:41:16
- * @Last Modified by:   name
- * @Last Modified time: 2019-03-20 16:27:14
+ * @Last Modified by:   zhao mac
+ * @Last Modified time: 2019-03-20 20:03:19
  */
 ## 单例+工厂的结合模型
 class Factory {
 	private function __construct() {}
-	private static $objectList = array();
+	private static $Models = array();
+	private static $Controllers = array();
     private static $config = null;
-	function getobj($name) {
-        if (!empty(self :: $objectList[$name])) {
-            return self :: $objectList[$name];
+	function getmodel($name) {
+        if (!empty(self :: $Models[$name])) {
+            return self :: $Models[$name];
         } else {
             $obj = new $name(self :: $config);
-            self :: $objectList[$name] = $obj;
+            self :: $Models[$name] = $obj;
+            return $obj;
+        }
+    }
+    function getcontroller($name) {
+        if (!empty(self :: $Controllers[$name])) {
+            return self :: $Controllers[$name];
+        } else {
+            $obj = new $name();
+            self :: $Controllers[$name] = $obj;
             return $obj;
         }
     }
