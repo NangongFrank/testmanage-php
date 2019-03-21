@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 18, 2019 at 12:19 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: 127.0.0.1
+-- Generation Time: Mar 21, 2019 at 11:03 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `a_pwd` varchar(50) NOT NULL COMMENT 'md5加密'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id`, `a_name`, `a_code`, `a_pwd`) VALUES
+(1, '管理员', 'admin', '81dc9bdb52d04dc20036dbd8313ed055');
+
 -- --------------------------------------------------------
 
 --
@@ -47,7 +54,7 @@ CREATE TABLE `admininfo` (
   `a_phone` char(11) DEFAULT NULL,
   `a_address` varchar(80) DEFAULT NULL,
   `a_email` varchar(30) DEFAULT NULL,
-  `a_sex` enum('女','男') DEFAULT NULL
+  `a_sex` tinyint(4) DEFAULT '1' COMMENT '男 => 1;女 => 0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -58,10 +65,11 @@ CREATE TABLE `admininfo` (
 
 CREATE TABLE `course` (
   `id` int(11) NOT NULL,
-  `c_code` varchar(20) NOT NULL COMMENT '时间戳+6位随机数',
-  `c_name` varchar(50) NOT NULL,
-  `c_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
-  `c_author_code` varchar(20) NOT NULL
+  `u_code` varchar(20) NOT NULL,
+  `u_phone` char(11) DEFAULT NULL,
+  `u_address` varchar(80) DEFAULT NULL,
+  `u_email` varchar(30) DEFAULT NULL,
+  `u_sex` tinyint(4) DEFAULT '1' COMMENT '男 => 1;女 => 2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -106,36 +114,6 @@ CREATE TABLE `stucourselog` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentfiles`
---
-
-CREATE TABLE `studentfiles` (
-  `id` int(11) NOT NULL,
-  `f_code` varchar(20) NOT NULL COMMENT '上传文件是确定(前端提供)',
-  `f_name` varchar(30) NOT NULL,
-  `f_truth_name` varchar(20) NOT NULL COMMENT '存储在服务器上的名称',
-  `f_path` varchar(30) NOT NULL COMMENT '存储路径',
-  `f_state` char(1) DEFAULT 'y'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacherfiles`
---
-
-CREATE TABLE `teacherfiles` (
-  `id` int(11) NOT NULL,
-  `f_code` varchar(20) NOT NULL COMMENT '上传文件是确定(前端提供)',
-  `f_name` varchar(30) NOT NULL,
-  `f_truth_name` varchar(20) NOT NULL COMMENT '存储在服务器上的名称',
-  `f_path` varchar(30) NOT NULL COMMENT '存储路径',
-  `f_state` char(1) DEFAULT 'y'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user`
 --
 
@@ -144,7 +122,8 @@ CREATE TABLE `user` (
   `u_name` varchar(20) DEFAULT '管理员',
   `u_code` varchar(20) NOT NULL,
   `u_pwd` varchar(50) NOT NULL COMMENT 'md5加密',
-  `u_role` enum('student','teacher') DEFAULT NULL
+  `u_role` enum('student','teacher') NOT NULL,
+  `u_state` tinyint(4) DEFAULT '1' COMMENT '0 => 账号已注销; 1 => 账号正在使用'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -159,7 +138,7 @@ CREATE TABLE `userinfo` (
   `u_phone` char(11) DEFAULT NULL,
   `u_address` varchar(80) DEFAULT NULL,
   `u_email` varchar(30) DEFAULT NULL,
-  `u_sex` enum('女','男') DEFAULT NULL
+  `u_sex` tinyint(4) DEFAULT '1' COMMENT '男 => 1;女 => 2'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -203,18 +182,6 @@ ALTER TABLE `stucourselog`
   ADD PRIMARY KEY (`action_log`);
 
 --
--- Indexes for table `studentfiles`
---
-ALTER TABLE `studentfiles`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `teacherfiles`
---
-ALTER TABLE `teacherfiles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -234,7 +201,7 @@ ALTER TABLE `userinfo`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admininfo`
@@ -246,18 +213,6 @@ ALTER TABLE `admininfo`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `studentfiles`
---
-ALTER TABLE `studentfiles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `teacherfiles`
---
-ALTER TABLE `teacherfiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
