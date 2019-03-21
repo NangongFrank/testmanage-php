@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2019 at 11:03 AM
+-- Generation Time: Mar 21, 2019 at 11:17 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -114,6 +114,36 @@ CREATE TABLE `stucourselog` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `studentfiles`
+--
+
+CREATE TABLE `studentfiles` (
+  `id` int(11) NOT NULL,
+  `f_code` varchar(20) NOT NULL COMMENT '上传文件是确定(前端提供)',
+  `f_name` varchar(30) NOT NULL,
+  `f_truth_name` varchar(20) NOT NULL COMMENT '存储在服务器上的名称',
+  `f_path` varchar(30) NOT NULL COMMENT '存储路径',
+  `f_state` tinyint(4) DEFAULT '1' COMMENT '0 => 文件还存在单不显示; 1 => 文件不仅存在而且显示'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teacherfiles`
+--
+
+CREATE TABLE `teacherfiles` (
+  `id` int(11) NOT NULL,
+  `f_code` varchar(20) NOT NULL COMMENT '上传文件是确定(前端提供)',
+  `f_name` varchar(30) NOT NULL,
+  `f_truth_name` varchar(20) NOT NULL COMMENT '存储在服务器上的名称',
+  `f_path` varchar(30) NOT NULL COMMENT '存储路径',
+  `f_state` tinyint(4) DEFAULT '1' COMMENT '0 => 文件还存在单不显示; 1 => 文件不仅存在而且显示'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -182,6 +212,18 @@ ALTER TABLE `stucourselog`
   ADD PRIMARY KEY (`action_log`);
 
 --
+-- Indexes for table `studentfiles`
+--
+ALTER TABLE `studentfiles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `teacherfiles`
+--
+ALTER TABLE `teacherfiles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -213,6 +255,18 @@ ALTER TABLE `admininfo`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `studentfiles`
+--
+ALTER TABLE `studentfiles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `teacherfiles`
+--
+ALTER TABLE `teacherfiles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
