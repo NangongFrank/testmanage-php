@@ -2,15 +2,20 @@
 /**
  * @Author: name
  * @Date:   2019-03-18 10:54:36
+<<<<<<< HEAD
  * @Last Modified by:   zhao mac
  * @Last Modified time: 2019-03-21 09:06:30
+=======
+ * @Last Modified by:   name
+ * @Last Modified time: 2019-03-21 11:33:05
+>>>>>>> dcc7ecb89afb57640ef7a8cc9f50e5221c682096
  */
 header("Access-Control-Allow-Origin:*");
 # header('Access-Control-Allow-Headers:x-requested-with,content-type');
 require_once './test.config.php';
 require_once "./base/DBModel.class.php";
 require_once "./base/Factory.class.php";
-
+require_once "./base/BaseController.class.php";
 ## 配置数据库模型实体类的连接配置属性
 Factory :: setconfig($config);
 ## 配置请求参数，必须有c，f
@@ -48,7 +53,7 @@ if(!empty($_REQUEST)) {
     $controller = Factory :: getcontroller($classname . "Controller");
     $controller -> $funcName($model, $options);
 } else {
-    $res = array("msg" => "post and get to request", "state" => 0);
+    $res = array("msg" => "post and get as 'application/x-www-form-urlencoded' or 'multipart/form-data' to request", "state" => 0);
     echo json_encode($res);
 }
 

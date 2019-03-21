@@ -2,8 +2,8 @@
 /**
  * @Author: name
  * @Date:   2019-03-18 11:18:13
- * @Last Modified by:   zhao mac
- * @Last Modified time: 2019-03-18 19:54:49
+ * @Last Modified by:   name
+ * @Last Modified time: 2019-03-21 11:11:25
  */
 
 class DBModel {
@@ -24,10 +24,10 @@ class DBModel {
 		mysqli_free_result($result);
 	}
 	function geterr() {
-		return mysqli_error($this :: $link);
+		return mysqli_error(self :: $link);
 	}
 	function getrow($sql) {
-		$result = mysqli_query($this :: $link, $sql);
+		$result = mysqli_query(self :: $link, $sql);
 		if ($result) {
 			$res = mysqli_fetch_assoc($result);
 			$this -> freeresult($result);
@@ -37,7 +37,7 @@ class DBModel {
 		}
 	}
 	function getrows($sql) {
-		$result = mysqli_query($this :: $link, $sql);
+		$result = mysqli_query(self :: $link, $sql);
 		if ($result) {
 			while ($row = mysqli_fetch_assoc($result)) {
 			    $res[] = $row;
@@ -50,7 +50,7 @@ class DBModel {
 		}
 	}
 	function getone($sql) {
-		$result = mysqli_query($this :: $link, $sql);
+		$result = mysqli_query(self :: $link, $sql);
 		if ($result) {
 			$res = mysqli_fetch_row($result);
 			$this -> freeresult($result);
@@ -61,7 +61,7 @@ class DBModel {
 	}
 	function exec($sql) {
 		mysqli_query($this :: $link, $sql);
-		$sum = mysqli_affected_rows($this :: $link);
+		$sum = mysqli_affected_rows(self :: $link);
 		if ($sum > 0) {
 			return true;
 		} else {
