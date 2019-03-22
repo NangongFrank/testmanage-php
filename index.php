@@ -1,15 +1,4 @@
 <?php
-/**
- * @Author: name
- * @Date:   2019-03-18 10:54:36
-<<<<<<< HEAD
- * @Last Modified by:   zhao mac
- * @Last Modified time: 2019-03-21 09:06:30
-=======
- * @Last Modified by:   name
- * @Last Modified time: 2019-03-21 11:33:05
->>>>>>> dcc7ecb89afb57640ef7a8cc9f50e5221c682096
- */
 header("Access-Control-Allow-Origin:*");
 # header('Access-Control-Allow-Headers:x-requested-with,content-type');
 require_once './test.config.php';
