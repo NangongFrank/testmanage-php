@@ -282,6 +282,9 @@
         .iconfont {
             margin-right: 20px;
         }
+      img {
+        transition: width .5s linear, height .5s linear;
+      }
     }
     .el-footer {
         display: flex;
