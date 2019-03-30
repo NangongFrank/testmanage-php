@@ -189,7 +189,8 @@
                   }
                 })
               } else {
-                message: "密码修改失败",
+                vm.$message({
+                  message: "密码修改失败",
                   duration: 1200,
                   type: "danger",
                   onClose() {
