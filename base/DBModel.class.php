@@ -3,9 +3,8 @@
  * @Author: name
  * @Date:   2019-03-18 11:18:13
  * @Last Modified by:   name
- * @Last Modified time: 2019-03-21 11:11:25
+ * @Last Modified time: 2019-03-25 20:32:17
  */
-
 class DBModel {
 	private static $link = null;
 	function __construct($config) {
