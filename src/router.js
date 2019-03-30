@@ -24,7 +24,7 @@ import SettingCourse from "./components/setting/Course"
 import SettingAdmin from "./components/setting/Admin"
 
 let router = new Router({
-    mode: "history",
+    //mode: "history",
     routes: [{
         path: "/",
         redirect: "/index",

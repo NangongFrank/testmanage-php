@@ -173,7 +173,7 @@
               return
             }
             vm.$req("post", {
-              c: "adimin",
+              c: "admin",
               f: 'changeadminpwd',
               code,
               oldPwd,
@@ -192,7 +192,7 @@
                 vm.$message({
                   message: "密码修改失败",
                   duration: 1200,
-                  type: "danger",
+                  type: "info",
                   onClose() {
                     vm.dialogFormVisible = false
                   }
