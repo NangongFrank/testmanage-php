@@ -151,9 +151,54 @@
 
           },
           recodePwdEvent() {
-            var vm = this
+            var vm = this,
+                code = vm.adminCode,
+                oldPwd = vm.oldPwd,
+                newPwd = vm.newPwd,
+                newRePwd = vm.newRePwd
+            if(!oldPwd || !newPwd || !newRePwd) {
+              vm.$message({
+                message: "修改密码不能有空值出现",
+                duration: 1200,
+                type: "info",
+              })
+              return
+            }
+            if(newPwd != newRePwd) {
+              vm.$message({
+                message: "两次新密码输入不一致",
+                duration: 1200,
+                type: "warning",
+              })
+              return
+            }
+            vm.$req("post", {
+              c: "adimin",
+              f: 'changeadminpwd',
+              code,
+              oldPwd,
+              newPwd,
+            }, res => {
+              if(res.state == 1) {
+                vm.$message({
+                  message: "密码修改成功",
+                  duration: 1200,
+                  type: "success",
+                  onClose() {
+                    vm.dialogFormVisible = false
+                  }
+                })
+              } else {
+                message: "密码修改失败",
+                  duration: 1200,
+                  type: "danger",
+                  onClose() {
+                    vm.dialogFormVisible = false
+                  }
+                })
+              }
+            })
 
-            vm.dialogFormVisible = false
           },
           checkIsLogin() {
             var admin = localStorage.adminInfo,

@@ -22,7 +22,6 @@
     </div>
 </template>
 <script>
-    import reqFunc from './../request'
     export default {
         methods: {
             login() {
@@ -43,7 +42,7 @@
                     spinner: "el-icon-loading",
                     background: "rgba(0, 0, 0, 0.7)",
                 })
-                reqFunc("post", {
+                vm.$req("post", {
                     code,
                     pwd,
                     c: "admin",

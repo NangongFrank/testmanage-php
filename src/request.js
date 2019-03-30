@@ -1,6 +1,9 @@
 import axios from 'axios'
 import qs from "qs"
-import {reqHost} from "./hostList"
+
+const reqHost = process.env.VUE_APP_HOST_WINDOWS
+//const reqHost = process.env.VUE_APP_HOST_MAC
+
 
 function req(type, data, success, err) {
     type = type.toLowerCase()
