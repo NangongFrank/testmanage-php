@@ -1,13 +1,29 @@
-## 课题管理系统数据操作代码库
+# vue-cli-back-ui
 
-* PHP作为数据操作语言
-* 结合MySQL采用原生开发
-* 使用的是面向过程的方法mysqli系类
-* 采用mvvm开发理念进行后台结构部署
-  * 数据库表操作类集合为model
-  * 前台请求数据处理为controller
-  * 由前台提供的请求参数确定操作数据库以及数据执行的方法
-  * 后代程序员根据前端提供的方法实现其对应的功能
-* 验证码等功能
-  * 抽离出一个特殊的数据集合，暂定为framework文件夹，用于进行响应的文件操作
-    * 文件的细致化操作，要么就是后台自动化处理，要么就是半自动化处理
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn run serve
+```
+
+### Compiles and minifies for production
+```
+yarn run build
+```
+
+### Run your tests
+```
+yarn run test
+```
+
+### Lints and fixes files
+```
+yarn run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
