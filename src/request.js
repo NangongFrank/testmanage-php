@@ -1,8 +1,8 @@
 import axios from 'axios'
 import qs from "qs"
 
-//const reqHost = process.env.VUE_APP_HOST_WINDOWS
-const reqHost = process.env.VUE_APP_HOST_MAC
+const reqHost = process.env.VUE_APP_HOST_WINDOWS
+//const reqHost = process.env.VUE_APP_HOST_MAC
 
 
 function req(type, data, success, err) {
