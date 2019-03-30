@@ -146,6 +146,9 @@
                 })
               })
             } else {
+              vm.oldPwd = ""
+              vm.newPwd = ""
+              vm.newRePwd = ""
               vm.dialogFormVisible = true
             }
 
