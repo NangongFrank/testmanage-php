@@ -2,9 +2,8 @@
 node_modules
 /dist
 
-# vue-cli config file
-.env.*
-.env
+# vue-cli request.js
+request.js
 
 # local env files
 .env.local
